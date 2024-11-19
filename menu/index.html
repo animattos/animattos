@@ -1,0 +1,468 @@
+<html><head><base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio Digital Interativo</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #2C3E50;
+  --secondary: #228B22;
+  --light: #ECF0F1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--primary);
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+              url('acesso-por-qr-code.jpg') center/cover;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-button {
+  background: var(--secondary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-button i {
+  color: white;
+}
+
+.hero-button:hover {
+  background: white;
+  color: var(--secondary);
+  border-color: var(--secondary);
+  transform: scale(1.05);
+}
+
+.hero-button:hover i {
+  color: var(--secondary);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 139, 34, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 139, 34, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 139, 34, 0);
+  }
+}
+
+.description {
+  background: #8b0000;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.features {
+  padding: 4rem 2rem;
+  background: var(--light);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: #8b0000;
+  margin-bottom: 1rem;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.process-description {
+  padding: 3rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-weight: 
+  line-height: 1.8;
+  animation: fadeIn 1.2s ease-out;
+  font-size: 20px;
+  color: #8b0000;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.highlight-text {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: var(--primary);
+}
+
+.qr-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: white;
+}
+
+.qr-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background: var(--light);
+  position: relative;
+}
+
+.qr-image {
+  max-width: 300px;
+  margin: 2rem auto;
+  display: block;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #8b0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #6b0000;
+}
+
+.arrow-down {
+  width: 150px;  
+  height: 150px; 
+  display: block;
+  margin: 0 auto;
+  margin-bottom: -90px; /* Changed from -80px to -90px */
+  position: relative;
+  z-index: 2;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+  }
+  .description {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+  .process-description {
+    font-size: 16px;
+    padding: 1.5rem;
+  }
+  .highlight-text {
+    font-size: 30px;
+  }
+}
+
+/* Adding new styles for pricing section */
+.pricing-container {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.pricing-options {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.pricing-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  min-width: 250px;
+  transition: transform 0.3s ease;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.pricing-card::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #8b0000;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+.price {
+  font-size: 2.5rem;
+  color: #8b0000;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.pricing-features li {
+  padding: 0.5rem 0;
+  color: #2C3E50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pricing-features li i {
+  color: #228B22;
+  font-size: 1.2rem;
+}
+
+.order-button {
+  background: var(--secondary);  /* Changed to match hero-button color */
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.order-button:hover {
+  background: white;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);  /* Added to match hero-button hover effect */
+  transform: scale(1.05);
+}
+
+/* Footer styles */
+.footer {
+  background: #8b0000;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <div>
+      <h1>Cardápio Digital Interativo</h1>
+      <p>A solução completa para modernizar seu restaurante</p>
+    </div>
+    <a href="https://wa.me/5521973743649" class="hero-button">
+      <i class="fab fa-whatsapp"></i>
+      Quero Receber Acesso
+    </a>
+  </div>
+</section>
+
+<div class="description">
+  O site "Cardápio Digital Interativo" oferece uma solução completa para restaurantes, proporcionando uma experiência moderna, prática e personalizada para clientes e estabelecimentos.
+</div>
+
+<section class="features">
+  <div class="features-grid">
+    <div class="feature-card">
+      <i class="fas fa-utensils"></i>
+      <h3>Criação de Menus</h3>
+      <p>Organize seus pratos e bebidas em listas intuitivas, proporcionando uma experiência clara e estruturada.</p>
+    </div>
+    
+    <div class="feature-card">
+      <i class="fas fa-volume-up"></i>
+      <h3>Sistema de Leitura em Áudio</h3>
+      <p>Leitura em voz das descrições dos pratos em português e inglês para maior acessibilidade.</p>
+    </div>
+    
+    <div class="feature-card">
+      <i class="fas fa-language"></i>
+      <h3>Tradução Instantânea</h3>
+      <p>Tradução automática entre português e inglês para atender um público multicultural.</p>
+    </div>
+    
+    <div class="feature-card">
+      <i class="fas fa-shopping-cart"></i>
+      <h3>Carrinho de Compras</h3>
+      <p>Adicione e gerencie itens escolhidos com facilidade e praticidade.</p>
+    </div>
+    
+    <div class="feature-card">
+      <i class="fas fa-receipt"></i>
+      <h3>Resumo de Compra</h3>
+      <p>Resumo detalhado do pedido com cálculo automático e opção de taxa de serviço.</p>
+    </div>
+    
+    <div class="feature-card">
+      <i class="fas fa-qrcode"></i>
+      <h3>Geração de QR Code</h3>
+      <p>QR Code com informações detalhadas do pedido para pagamento rápido e simples.</p>
+    </div>
+  </div>
+</section>
+
+<div class="process-description">
+  <span class="highlight-text"><strong>Ao gerar o QR Code, o garçom realiza uma leitura rápida usando o celular...</strong></span>
+  recebendo imediatamente todas as informações detalhadas do pedido, incluindo valores totais e o código da mesa. Esse processo torna o atendimento mais ágil e eficiente, eliminando erros e proporcionando uma experiência mais prática tanto para os clientes quanto para a equipe de serviço, otimizando o fluxo do restaurante com simplicidade e precisão.
+</div>
+
+<div class="pricing-container">
+  <div class="pricing-options">
+    <div class="pricing-card">
+      <h3>Plano Free Light</h3>
+      <div class="price">R$ 29,90<small>/mês</small></div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check-circle"></i> Hospedagem inclusa</li>
+        <li><i class="fas fa-check-circle"></i> Montagem do cardápio</li>
+        <li><i class="fas fa-check-circle"></i> Suporte premium 24/7</li>
+        <li><i class="fas fa-check-circle"></i> Para todas as Mesas</li>
+        <li><i class="fas fa-check-circle"></i> Espaço para publicidade</li>
+      </ul>
+      <a href="https://wa.me/5521973743649" class="order-button">Pedir Agora</a>
+    </div>
+  </div>
+</div>
+
+<img src="seta.png" alt="Seta apontando para baixo em tom marrom" class="arrow-down" width="150" height="150">
+
+<section class="qr-section">
+  <div class="qr-container">
+    <h2>Experimente Agora!</h2>
+    <p>Aponte a câmera do seu celular para o QR Code abaixo e acesse nosso cardápio de demonstração. OU clique no botão abaixo</p>
+    
+    <img src="Meu_QR_code_1-1024.jpeg" alt="QR Code para acessar o cardápio digital demonstrativo" class="qr-image" width="300" height="300">
+    
+    <a href="https://cardapiodigital-delta.vercel.app/CARDAPIO/index.html" class="cta-button">Acessar Demonstração</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>
+    <p>© 2023 Cardápio Digital Interativo</p>
+    <p>Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Animate feature cards on scroll
+  const cards = document.querySelectorAll('.feature-card');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  cards.forEach(card => {
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'all 0.6s ease-out';
+    observer.observe(card);
+  });
+});
+</script>
+
+</body></html>
